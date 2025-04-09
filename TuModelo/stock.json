@@ -1,0 +1,150 @@
+{
+    "tarjetas de video": {
+        "video nvidia": {
+            "cantidad": 0,
+            "precio": 2000000
+        },
+        "video radeon": {
+            "cantidad": 10,
+            "precio": 700000
+        },
+        "video intel": {
+            "cantidad": 7,
+            "precio": 500000
+        }
+    },
+    "fuentes de poder": {
+        "fuente corsair": {
+            "cantidad": 5,
+            "precio": 90000
+        },
+        "fuente evga": {
+            "cantidad": 8,
+            "precio": 85000
+        },
+        "fuente thermaltake": {
+            "cantidad": 12,
+            "precio": 80000
+        },
+        "fuente seasonic": {
+            "cantidad": 0,
+            "precio": 100000
+        }
+    },
+    "gabinetes": {
+        "gabinete corsair": {
+            "cantidad": 10,
+            "precio": 100
+        },
+        "gabinete termaltake": {
+            "cantidad": 0,
+            "precio": 120
+        },
+        "gabinete cooler master": {
+            "cantidad": 12,
+            "precio": 110
+        },
+        "gabinete nzxt": {
+            "cantidad": 7,
+            "precio": 130
+        }
+    },
+    "memorias ram": {
+        "ram trident z": {
+            "cantidad": 12,
+            "precio": 100
+        },
+        "ram corsair": {
+            "cantidad": 7,
+            "precio": 80
+        },
+        " ram kingston": {
+            "cantidad": 0,
+            "precio": 70
+        }
+    },
+    "procesadores": {
+        "proce intel": {
+            "cantidad": 8,
+            "precio": 300
+        },
+        "proce amd": {
+            "cantidad": 18,
+            "precio": 250
+        }
+    },
+    "discos ssd": {
+        "ssd kingston": {
+            "cantidad": 9,
+            "precio": 50
+        },
+        "ssd samsung": {
+            "cantidad": 7,
+            "precio": 60
+        },
+        "ssd crucial": {
+            "cantidad": 0,
+            "precio": 70
+        },
+        "ssd corsair": {
+            "cantidad": 8,
+            "precio": 55
+        }
+    },
+    "discos rigidos": {
+        "ssd seagate": {
+            "cantidad": 10,
+            "precio": 40
+        },
+        "ssd western digital": {
+            "cantidad": 8,
+            "precio": 45
+        },
+        "ssd toshiba": {
+            "cantidad": 0,
+            "precio": 50
+        }
+    },
+    "placas madre": {
+        "placa tuf": {
+            "cantidad": 10,
+            "precio": 150
+        },
+        "placa rog": {
+            "cantidad": 6,
+            "precio": 180
+        },
+        "placa gigabyte": {
+            "cantidad": 0,
+            "precio": 160
+        }
+    },
+    "refrigeracion liquida": {
+        "liq corsair": {
+            "cantidad": 9,
+            "precio": 90
+        },
+        "liq cooler master": {
+            "cantidad": 8,
+            "precio": 80
+        },
+        "liq nzxt": {
+            "cantidad": 0,
+            "precio": 100
+        }
+    },
+    "refrigeracion por aire": {
+        "ref cooler master": {
+            "cantidad": 10,
+            "precio": 50
+        },
+        "ref thermaltake": {
+            "cantidad": 8,
+            "precio": 60
+        },
+        "ref noctua": {
+            "cantidad": 0,
+            "precio": 70
+        }
+    }
+}

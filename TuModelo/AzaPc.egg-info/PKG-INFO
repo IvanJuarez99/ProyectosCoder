@@ -1,0 +1,9 @@
+Metadata-Version: 2.2
+Name: AzaPc
+Version: 0.0.0.0.0.1
+Summary: Un paquete de ejemplo en Python
+Author: Ivan
+Author-email: ivanjuarez0999@gmail.com
+Dynamic: author
+Dynamic: author-email
+Dynamic: summary

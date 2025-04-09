@@ -1,0 +1,25 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <h2>Buscar artículos por categoría</h2>
+    <form method="get">
+        <input type="text" name="categoria" placeholder="Escribí una categoría...">
+        <input type="submit" value="Buscar">
+    </form>
+    {% if articulos %}
+    <h3>Resultados:</h3>
+    <ul>
+        {% for articulo in articulos %}
+            <li>
+                <strong>{{ articulo.titulo }}</strong><br>
+                ✍️ Autor: {{ articulo.autor_nombre }}<br>
+                📚 Categoría: {{ articulo.categoria_nombre }}<br>
+                📝 Contenido: {{ articulo.contenido }}
+            </li>
+        {% endfor %}
+    </ul>
+{% elif request.GET.categoria %}
+    <p>No se encontraron artículos con esa categoría.</p>
+{% endif %}
+
+{% endblock %}

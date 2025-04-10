@@ -16,7 +16,7 @@ def registro(request):
         form = RegistroUsuarioForm(request.POST)
         if form.is_valid():
             user = form.save()
-            # Crear un autor vacío asociado al nuevo usuario
+
             Autor.objects.get_or_create(user=user, nombre=user.username)
             login(request, user)
             autor = Autor.objects.get(user=user)
@@ -42,7 +42,7 @@ def perfil_autor(request, autor_id):
 def editar_articulo(request, pk):
     articulo = get_object_or_404(Articulo, pk=pk)
 
-    # Verificar si el usuario es el autor del artículo
+
     if articulo.autor.user != request.user:
         return HttpResponseForbidden("No tenés permiso para editar este artículo.")
     
@@ -50,9 +50,9 @@ def editar_articulo(request, pk):
         form = ArticuloForm(request.POST, instance=articulo)
         if form.is_valid():
             form.save()
-            return redirect('perfil_autor', autor_id=articulo.autor.id)  # Redirigir al perfil del autor
+            return redirect('perfil_autor', autor_id=articulo.autor.id)
 
-    else:  # Si es un GET, mostrar el formulario con los datos actuales del artículo
+    else:
         form = ArticuloForm(instance=articulo)
 
     return render(request, 'blog/editar_articulo.html', {'form': form, 'articulo': articulo})
@@ -62,14 +62,14 @@ def eliminar_articulo(request, pk):
     try:
         articulo = Articulo.objects.get(pk=pk)
     except Articulo.DoesNotExist:
-        # Si el artículo no se encuentra, redirigir al listado de artículos o mostrar un mensaje
-        return redirect('articulo_list')  # O cualquier otra URL válida, como 'inicio'
+
+        return redirect('articulo_list') 
 
     if articulo.autor.user != request.user:
         return HttpResponseForbidden("No tenés permiso para eliminar este artículo.")
     
     articulo.delete()
-    return redirect('perfil_autor', autor_id=articulo.autor.id)  # Redirigir al perfil del autor
+    return redirect('perfil_autor', autor_id=articulo.autor.id) 
 
 @login_required
 def buscar_autor(request):
@@ -79,7 +79,7 @@ def buscar_autor(request):
     else:
         articulos = []
 
-    # Lista completa de autores
+
     todos_los_autores = Autor.objects.all()
 
     return render(request, 'blog/buscar_autor.html', {
@@ -124,7 +124,7 @@ def crear_articulo(request):
             if nueva_categoria:
                 categoria, _ = Categoria.objects.get_or_create(nombre=nueva_categoria)
 
-            # Asociar automáticamente el usuario logueado con un autor
+
             autor, _ = Autor.objects.get_or_create(
                 user=request.user,
                 defaults={

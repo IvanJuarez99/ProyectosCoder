@@ -1,21 +1,24 @@
 # Blog de Programación
-En esta aplicación se pueden crear artículos de programación, autores y categorías, y realizar búsquedas por título.
+En esta aplicación se pueden crear artículos de programación, autores y categorías, y realizar búsquedas por título, nombre del autor o categoria.
+Tambien se tendra un perfil exclusivo para cada cuenta.
 # *************************************************************
 
 # Funcionalidades incluidas
 
 -  Uso del patrón MVT
 -  Herencia de plantillas HTML
--  3 modelos en base de datos: `Articulo`, `Autor`, `Categoria`
--  Formularios para crear instancias de cada modelo
+-  Modelos en base de datos: `Articulo`, `Autor`, `Categoria`, `Perfil`, `Usuario`, `Contraseña`, `mail`.
+-  Formularios para crear instancias de Articulos, con su Autor(el que inicio sesion), y su Categoria
 -  Formulario de búsqueda de artículos por título
 -  Diseño estilo blog de programación
+-  Login de antiguos Trabajos practicos
 # *************************************************************
 
 # ¿Cómo probar la app?
 
 cd blog_de_programacion
 python manage.py runserver
+ingresar a http://127.0.0.1:8000
 # *************************************************************
 
 # Estructura
@@ -64,6 +67,14 @@ python manage.py runserver
 - Ir a: /Buscar Artículo/
 
 - Se listan todos los artículos creados con su título, autor y categoría y se puede buscar uno en particular.
+
+6. Perfil y cerrar sesion:
+
+- Ir a: Tu nombre (esquina derecha) donde podra entrar al perfil del usuario o cerrar sesion.
+
+7. Perfil
+
+- Dentro del perfil podra ver los articulos creados, editarlos o eliminarlos.
 # *************************************************************
 
 # HTML y CCS

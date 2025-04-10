@@ -36,9 +36,6 @@ class ArticuloForm(forms.ModelForm):
 
     nueva_categoria = forms.CharField(max_length=50, required=False, label="Nueva Categoría")
     categoria = forms.ModelChoiceField(queryset=Categoria.objects.all(), required=False, label="Categoría")
-    # autor = forms.ModelChoiceField(queryset=Autor.objects.all(), required=False, label="Autor")
-    # nuevo_autor = forms.CharField(max_length=100, required=False, label="Nuevo Autor")
-
     class Meta:
         model = Articulo
         fields = ['titulo', 'contenido', 'categoria']

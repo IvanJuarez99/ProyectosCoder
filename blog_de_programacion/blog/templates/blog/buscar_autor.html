@@ -23,7 +23,7 @@
         <p>No se encontraron artículos de ese autor.</p>
     {% endif %}
 
-    <h2>Lista de todos los autores</h2>
+    <h2>Lista de todos los autores creados</h2>
     <ul>
         {% for autor in todos_los_autores %}
             <li>✍️ <a href="{% url 'perfil_autor' autor_id=autor.id %}">{{ autor.nombre }}</a></li>

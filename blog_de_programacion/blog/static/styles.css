@@ -17,6 +17,46 @@
     border: 1px solid #ccc;
     font-size: 16px;
 }
+/* Estilo de los botones "Borrar cuenta" */
+button[type="submit"].btn-danger {
+    background-color: #d9534f; /* Rojo */
+    border: 1px solid #d9534f; /* Rojo en el borde */
+    color: white;
+    font-weight: bold;
+    padding: 0.7rem 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button[type="submit"].btn-danger:hover {
+    background-color: #c9302c; /* Rojo más oscuro al hacer hover */
+    border-color: #c12e2a; /* Rojo más oscuro en el borde */
+}
+
+/* Estilo de los botones "Cancelar" */
+button[type="button"].btn-secondary {
+    background-color: #6c757d; /* Gris */
+    border-color: #5a6268; /* Gris oscuro */
+    color: white;
+    font-weight: bold;
+    padding: 0.7rem 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button[type="button"].btn-secondary:hover {
+    background-color: #5a6268; /* Gris más oscuro al hacer hover */
+    border-color: #4e555b; /* Gris más oscuro en el borde */
+}
+
+
+button[type="button"].btn-secondary {
+    background-color: #6c757d; /* Gris */
+    border-color: #5a6268; /* Gris oscuro */
+    color: white;
+}
 
 .search-button {
     width: 100%; 

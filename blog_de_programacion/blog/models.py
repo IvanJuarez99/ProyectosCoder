@@ -3,8 +3,8 @@ from django.contrib.auth.models import User
 
 class Autor(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
-    nombre = models.CharField(max_length=100)
-    especialidad = models.CharField(max_length=100)
+    nombre = models.CharField(max_length=20)
+    especialidad = models.CharField(max_length=20)
     biografia = models.TextField()
 
     def __str__(self):
@@ -12,7 +12,7 @@ class Autor(models.Model):
 
 
 class Categoria(models.Model):
-    nombre = models.CharField(max_length=50)
+    nombre = models.CharField(max_length=20)
     descripcion = models.TextField()
 
     def __str__(self):
@@ -20,7 +20,7 @@ class Categoria(models.Model):
 
 
 class Articulo(models.Model):
-    titulo = models.CharField(max_length=200)
+    titulo = models.CharField(max_length=20)
     autor = models.ForeignKey(Autor, on_delete=models.CASCADE)
     contenido = models.TextField()
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)

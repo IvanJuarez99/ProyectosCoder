@@ -20,8 +20,19 @@
         {% endfor %}
     </ul>
 
-    <!-- Botón para regresar a la búsqueda de perfiles -->
-    <a href="{% url 'buscar_autor' %}">
-        <button>Regresar a Buscar Articulos por Autores</button>
-    </a>
+    <!-- Botón para regresar a la búsqueda de artículos por autores -->
+    <div style="margin-top: 20px;">
+        <a href="{% url 'buscar_autor' %}">
+            <button type="button" style="background-color: #8b00d6; color: white; border: none; padding: 0.7rem 1.5rem; border-radius: 5px; cursor: pointer;">Regresar a Buscar Artículos por Autores</button>
+        </a>
+    </div>
+
+    <!-- Botón para eliminar la cuenta (en rojo) -->
+    {% if es_mi_perfil %}
+        <div style="margin-top: 20px;">
+            <a href="{% url 'eliminar_cuenta' %}">
+                <button type="button" style="background-color: #d9534f; color: white; border: 1px solid #d9534f; padding: 0.7rem 1.5rem; border-radius: 5px; cursor: pointer;">Eliminar mi cuenta</button>
+            </a>
+        </div>
+    {% endif %}
 {% endblock %}

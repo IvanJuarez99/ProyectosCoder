@@ -1,15 +1,12 @@
-from django.shortcuts import render, redirect
-from .forms import ArticuloForm, BusquedaArticuloForm
+from django.shortcuts import render, redirect, get_object_or_404
+from .forms import ArticuloForm, BusquedaArticuloForm, RegistroUsuarioForm
 from .models import Articulo,Autor, Categoria
 from django.contrib.auth.decorators import login_required
-from .forms import RegistroUsuarioForm
-from django.contrib.auth import login
-from django.shortcuts import get_object_or_404
+from django.contrib.auth import login, logout
 from django.http import HttpResponseForbidden
+from django.contrib.auth.models import User
+from django.contrib import messages
 
-from django.shortcuts import render, redirect
-from .forms import RegistroUsuarioForm
-from .models import Autor
 
 def registro(request):
     if request.method == 'POST':
@@ -70,6 +67,18 @@ def eliminar_articulo(request, pk):
     
     articulo.delete()
     return redirect('perfil_autor', autor_id=articulo.autor.id) 
+
+@login_required
+def eliminar_cuenta(request):
+    if request.method == 'POST':
+        user = request.user
+        user.delete()
+        logout(request)
+    
+        messages.success(request, 'Tu cuenta ha sido eliminada con éxito.')
+        return redirect('inicio')
+
+    return render(request, 'blog/eliminar_cuenta.html')
 
 @login_required
 def buscar_autor(request):

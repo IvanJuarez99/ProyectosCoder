@@ -12,6 +12,7 @@ Tambien se tendra un perfil exclusivo para cada cuenta.
 -  Formulario de búsqueda de artículos por título
 -  Diseño estilo blog de programación
 -  Login de antiguos Trabajos practicos
+-  Eliminacion de Cuentas creadas
 # *************************************************************
 
 # ¿Cómo probar la app?
@@ -74,7 +75,8 @@ ingresar a http://127.0.0.1:8000
 
 7. Perfil
 
-- Dentro del perfil podra ver los articulos creados, editarlos o eliminarlos.
+- Dentro del perfil podra ver los articulos creados, editarlos o eliminarlos y tambien eliminar la cuenta.
+
 # *************************************************************
 
 # HTML y CCS

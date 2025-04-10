@@ -14,7 +14,7 @@
                 {% for articulo in resultados %}
                     <li>
                         <strong>{{ articulo.titulo }}</strong><br>
-                        <span style="color: #562ea5;">👨‍💻</span> <strong>Autor:</strong> {{ articulo.autor.nombre }}<br>
+                        <span style="color: #562ea5;">👨‍💻</span> <strong>Autor:<a href="{% url 'perfil_autor' autor_id=articulo.autor.id %}">{{ articulo.autor.nombre }}</a><br>
                         <span style="color: #562ea5;">📚</span> <strong>Categoría:</strong> {{ articulo.categoria.nombre }}<br>
                         <span style="color: #562ea5;">🔗</span> <strong>GitHub:</strong> 
                         <a href="{{ articulo.contenido }}" target="_blank">{{ articulo.contenido }}</a><br>
@@ -26,12 +26,12 @@
         {% endif %}
     {% endif %}
 
-    <h2>Ver todos los artículos</h2>
+    <h2>Lista de todos los artículos creados</h2>
     <ul class="resultados">
     {% for articulo in todos_los_articulos %}
         <li>
             <strong>{{ articulo.titulo }}</strong><br>
-            <span style="color: #562ea5;">👨‍💻</span> <strong>Autor:</strong> {{ articulo.autor.nombre }}<br>
+            <span style="color: #562ea5;">👨‍💻</span> <strong>Autor:<a href="{% url 'perfil_autor' autor_id=articulo.autor.id %}">{{ articulo.autor.nombre }}</a><br>
             <span style="color: #562ea5;">📚</span> <strong>Categoría:</strong> {{ articulo.categoria.nombre }}<br>
             <span style="color: #562ea5;">🔗</span> <strong>GitHub:</strong> 
             <a href="{{ articulo.contenido }}" target="_blank">{{ articulo.contenido }}</a><br>

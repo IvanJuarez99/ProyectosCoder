@@ -1,0 +1,15 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <h2>Eliminar cuenta</h2>
+    <p style="color: rgb(242, 242, 242); font-weight: bold;">¿Estás seguro de que deseas eliminar tu cuenta? Esta acción es irreversible.</p>
+    <form method="POST">
+        {% csrf_token %}
+        <!-- Botón de confirmación en rojo -->
+        <button type="submit" style="background-color: #d9534f; color: white; border: 1px solid #d9534f; padding: 0.7rem 1.5rem; border-radius: 5px; cursor: pointer;">Eliminar mi cuenta</button>
+    </form>
+    <a href="{% url 'perfil_autor' autor_id=request.user.autor.id %}">
+        <!-- Botón de cancelación en gris -->
+        <button type="button" style="background-color: #8904e8; color: white; border-color: #5a6268; padding: 0.7rem 1.5rem; border-radius: 5px; cursor: pointer;">Cancelar</button>
+    </a>
+{% endblock %}

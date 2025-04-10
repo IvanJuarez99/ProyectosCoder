@@ -12,7 +12,7 @@
         {% for articulo in articulos %}
             <li>
                 <strong>{{ articulo.titulo }}</strong><br>
-                ✍️ Autor: {{ articulo.autor.nombre }}<br>
+                ✍️ Autor: <a href="{% url 'perfil_autor' autor_id=articulo.autor.id %}">{{ articulo.autor.nombre }}</a><br>
                 📚 Categoría: {{ articulo.categoria.nombre }}<br>
                 🔗 GitHub: <a href="{{ articulo.contenido }}" target="_blank">{{ articulo.contenido }}</a><br>
             </li>
@@ -21,7 +21,7 @@
 {% elif request.GET.categoria %}
     <p>No se encontraron artículos con esa categoría.</p>
 {% endif %}
-<h2>Lista de todas las categorías</h2>
+<h2>Lista de todas las categorías creadas</h2>
 <ul>
     {% for categoria in todas_las_categorias %}
         <li>📚  {{ categoria.nombre }}</li>

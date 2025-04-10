@@ -12,8 +12,8 @@
             {% for articulo in articulos %}
                 <li>
                     <strong>{{ articulo.titulo }}</strong><br>
-                    ✍️ Autor: {{ articulo.autor_nombre }}<br>
-                    📚 Categoría: {{ articulo.categoria_nombre }}<br>
+                    ✍️ Autor: {{ articulo.autor.nombre }}<br>
+                    📚 Categoría: {{ articulo.categoria.nombre }}<br>
                     📝 {{ articulo.contenido }}
                 </li>
             {% endfor %}

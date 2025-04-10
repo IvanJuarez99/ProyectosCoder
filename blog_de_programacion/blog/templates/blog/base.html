@@ -121,22 +121,45 @@
 <body>
     <header>
         <h1>CoderVerse</h1>
-        <nav>
-            <a href="{% url 'inicio' %}">Inicio</a>
-            <a href="{% url 'crear_articulo' %}">Nuevo Artículo</a>
-            <a href="{% url 'buscar_autor' %}">Buscar Autor</a>
-            <a href="{% url 'buscar_categoria' %}">Buscar Categoría</a>
-            <a href="{% url 'buscar_articulos' %}">Buscar Artículo</a>
-        </nav>
+    
+        {% if user.is_authenticated %}
+            <nav style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+    
+                <!-- Enlaces centrados -->
+                <div style="display: flex; justify-content: center; flex-wrap: wrap; flex: 1;">
+                    <a href="{% url 'inicio' %}">Inicio</a>
+                    <a href="{% url 'crear_articulo' %}">Nuevo Artículo</a>
+                    <a href="{% url 'buscar_autor' %}">Buscar por Autor</a>
+                    <a href="{% url 'buscar_categoria' %}">Buscar por Categoría</a>
+                    <a href="{% url 'buscar_articulos' %}">Buscar Artículo</a>
+                </div>
+    
+                <!-- Usuario a la derecha -->
+                <div style="text-align: right; min-width: 200px; margin-left: auto;">
+                    Hola, {{ user.username }} |
+                    <form action="{% url 'logout' %}" method="post" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit" style="background:none; border:none; color:rgb(185, 143, 247); cursor:pointer; font-weight:bold;">
+                            Cerrar sesión
+                        </button>
+                    </form>
+                </div>
+            </nav>
+    
+        {% else %}
+            <nav>
+                {% if request.resolver_match.url_name != 'login' %}
+                    <a href="{% url 'login' %}">Iniciar sesión</a>
+                {% endif %}
+                {% if request.resolver_match.url_name != 'registro' and request.resolver_match.url_name != 'login' %}
+                    <a href="{% url 'registro' %}">Registrarse</a>
+                {% endif %}
+            </nav>
+        {% endif %}
     </header>
+    </div>
 
     <main>
         {% block content %}
         {% endblock %}
     </main>
-
-    <footer>
-        <p>&copy; 2025 CoderVerse - Iván Juárez</p>
-    </footer>
-</body>
-</html>

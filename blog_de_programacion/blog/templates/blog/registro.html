@@ -1,0 +1,104 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Registrarse - CoderVerse</title>
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+    <style>
+        body {
+            background-color: #121212;
+            font-family: 'Segoe UI', sans-serif;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+
+        .form-container {
+            max-width: 400px;
+            margin: 80px auto;
+            background-color: #1e1e1e;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.5);
+        }
+
+        h2 {
+            text-align: center;
+            color: #a66eff;
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            color: #ccc;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 6px;
+            margin-top: 5px;
+            background-color: #2a2a2a;
+            color: #fff;
+        }
+
+        .form-errors {
+            color: #ff7070;
+            margin-top: 10px;
+        }
+
+        .password-help {
+            font-size: 0.85em;
+            color: #888;
+            margin-top: 5px;
+        }
+
+        button {
+            background-color: #a66eff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            margin-top: 20px;
+            width: 100%;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #925df7;
+        }
+
+        .extra-links {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 0.9em;
+        }
+
+        .extra-links a {
+            color: #a66eff;
+            text-decoration: none;
+        }
+
+        .extra-links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Crear tu cuenta para CoderVerse</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Registrarse</button>
+        </form>
+        <div class="extra-links">
+            ¿Ya tenés cuenta? <a href="{% url 'login' %}">Iniciar sesión</a>
+        </div>
+    </div>
+</body>
+</html>

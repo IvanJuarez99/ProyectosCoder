@@ -1,0 +1,93 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<div class="login-wrapper">
+    <h1 class="welcome-title">Bienvenido a <span class="brand">CoderVerse</span></h1>
+    <p class="welcome-subtitle">Tu página preferida de programación. Iniciá sesión para acceder al contenido exclusivo.</p>
+
+    <div class="form-box">
+        <h2>Iniciar Sesión</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Ingresar</button>
+        </form>
+        <div class="extra-links">
+            <span>¿No tenés cuenta? <a href="{% url 'registro' %}">Registrarse</a></span>
+        </div>
+    </div>
+</div>
+
+<style>
+    .login-wrapper {
+        max-width: 500px;
+        margin: 50px auto;
+        padding: 20px;
+        text-align: center;
+        color: #ddd;
+    }
+
+    .welcome-title {
+        font-size: 2.2rem;
+        margin-bottom: 10px;
+    }
+
+    .brand {
+        color: #a974f8;
+    }
+
+    .welcome-subtitle {
+        font-size: 1.1rem;
+        margin-bottom: 30px;
+        color: #aaa;
+    }
+
+    .form-box {
+        background-color: #2c2c2c;
+        border-radius: 12px;
+        padding: 25px;
+        box-shadow: 0 0 10px rgba(167, 116, 248, 0.2);
+    }
+
+    form {
+        margin-top: 15px;
+    }
+
+    form input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #555;
+        border-radius: 8px;
+        background-color: #1e1e1e;
+        color: #fff;
+    }
+
+    button {
+        background-color: #a974f8;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    button:hover {
+        background-color: #8f5be0;
+    }
+
+    .extra-links {
+        margin-top: 15px;
+    }
+
+    .extra-links a {
+        color: #a974f8;
+        text-decoration: none;
+    }
+
+    .extra-links a:hover {
+        text-decoration: underline;
+    }
+</style>
+{% endblock %}

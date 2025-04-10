@@ -9,4 +9,6 @@ urlpatterns = [
     path('buscar_categoria/', views.buscar_categoria, name='buscar_categoria'),
     path('buscar_articulos/', views.buscar_articulos, name='buscar_articulos'),
     path('', views.inicio, name='inicio'),
+    path('registro/', views.registro, name='registro'),
+    
 ]

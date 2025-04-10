@@ -1,8 +1,24 @@
 from django.shortcuts import render, redirect
 from .forms import ArticuloForm, BusquedaArticuloForm
 from .models import Articulo,Autor, Categoria
+from django.contrib.auth.decorators import login_required
+from .forms import RegistroUsuarioForm
+from django.contrib.auth import login
 
 
+
+def registro(request):
+    if request.method == 'POST':
+        form = RegistroUsuarioForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect('inicio')
+    else:
+        form = RegistroUsuarioForm()
+    return render(request, 'blog/registro.html', {'form': form})
+
+@login_required
 def buscar_autor(request):
     autor = request.GET.get('autor')
     if autor:
@@ -11,7 +27,7 @@ def buscar_autor(request):
         articulos = []
     return render(request, 'blog/buscar_autor.html', {'articulos': articulos})
 
-
+@login_required
 def buscar_categoria(request):
     categoria = request.GET.get("categoria", "")
     articulos = Articulo.objects.filter(categoria__nombre__icontains=categoria) if categoria else []
@@ -19,7 +35,7 @@ def buscar_categoria(request):
 
 
 
-
+@login_required
 def buscar_articulos(request):
     query = request.GET.get('query', '')
     
@@ -32,7 +48,7 @@ def buscar_articulos(request):
 
     form = BusquedaArticuloForm(request.GET)
     return render(request, 'blog/buscar_articulos.html', {'form': form, 'resultados': resultados, 'todos_los_articulos': todos_los_articulos, 'query': query})
-
+@login_required
 def crear_articulo(request):
     if request.method == 'POST':
         form = ArticuloForm(request.POST)
@@ -59,11 +75,11 @@ def crear_articulo(request):
         form = ArticuloForm()
 
     return render(request, 'blog/crear_articulo.html', {'form': form})
-
+@login_required
 def articulo_list(request):
     articulos = Articulo.objects.all() 
     return render(request, 'blog/articulo_list.html', {'articulos': articulos})
 
-
+@login_required
 def inicio(request):
     return render(request, 'blog/inicio.html')

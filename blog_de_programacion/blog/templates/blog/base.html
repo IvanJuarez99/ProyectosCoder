@@ -14,17 +14,11 @@
             color: white;
         }
 
-
-        body {
-            background-color: #2f2f2f;
-        }
-
         body {
             display: flex;
             flex-direction: column;
             min-height: 100vh;
         }
-
 
         header, footer {
             background-color: #242424;
@@ -32,7 +26,6 @@
             text-align: center;
             padding: 1rem;
         }
-
 
         nav {
             display: flex;
@@ -46,7 +39,7 @@
             margin: 0 1.5rem;
             text-decoration: none;
             font-weight: bold;
-            padding: 0.5rem 1rem;
+            padding: 0.5rem 0.5rem;
             border-radius: 6px;
             transition: background-color 0.3s;
         }
@@ -54,7 +47,6 @@
         nav a:hover {
             background-color: #5f4b8b; 
         }
-
 
         main {
             width: 80%;
@@ -67,16 +59,13 @@
             flex: 1;
         }
 
-
         h1, h2 {
             color: #a36cd6; 
         }
 
-
         p, a {
             color: #f0f0f0;
         }
-
 
         form input, form select, form textarea {
             width: 100%;
@@ -89,21 +78,18 @@
             color: white; 
         }
 
-
         input[type="submit"], button {
             background-color: #774396; 
             color: white;
             border: none;
             padding: 0.7rem 1.5rem;
-            border-radius: 6px;
+            border-radius: 5px;
             cursor: pointer;
         }
-
 
         footer {
             margin-top: auto;
         }
-
 
         @media (max-width: 768px) {
             main {
@@ -121,10 +107,9 @@
 <body>
     <header>
         <h1>CoderVerse</h1>
-    
+
         {% if user.is_authenticated %}
             <nav style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
-    
                 <!-- Enlaces centrados -->
                 <div style="display: flex; justify-content: center; flex-wrap: wrap; flex: 1;">
                     <a href="{% url 'inicio' %}">Inicio</a>
@@ -133,19 +118,27 @@
                     <a href="{% url 'buscar_categoria' %}">Buscar por Categoría</a>
                     <a href="{% url 'buscar_articulos' %}">Buscar Artículo</a>
                 </div>
-    
+
                 <!-- Usuario a la derecha -->
-                <div style="text-align: right; min-width: 200px; margin-left: auto;">
-                    Hola, {{ user.username }} |
-                    <form action="{% url 'logout' %}" method="post" style="display:inline;">
+                <div style="display: flex; align-items: center; font-weight: bold; font-size: 0.95rem;">
+                    <span>Perfil:</span>
+                    {% with autor=user.autor %}
+                        {% if autor %}
+                            <a href="{% url 'perfil_autor' autor.id %}" style="color: rgb(185, 143, 247); text-decoration: none; margin: 0 2px;">{{ user.username }}</a>
+                        {% else %}
+                            <span style="color: rgb(185, 143, 247); margin: 0 px;">{{ user.username }}</span>
+                        {% endif %}
+                    {% endwith %}
+                    <span>| </span>
+                    <form action="{% url 'logout' %}" method="post" style="display: inline; margin-left: 5px;">
                         {% csrf_token %}
-                        <button type="submit" style="background:none; border:none; color:rgb(185, 143, 247); cursor:pointer; font-weight:bold;">
-                            Cerrar sesión
-                        </button>
+                        <button type="submit" style="border: none; background: none; padding: 0; margin: 0; color: rgb(185, 143, 247);font-size: 0.90rem; font-weight: bold; cursor: pointer; display: inline;">Cerrar sesión</button>
                     </form>
                 </div>
+                
+                
+
             </nav>
-    
         {% else %}
             <nav>
                 {% if request.resolver_match.url_name != 'login' %}
@@ -157,9 +150,10 @@
             </nav>
         {% endif %}
     </header>
-    </div>
 
     <main>
         {% block content %}
         {% endblock %}
     </main>
+</body>
+</html>

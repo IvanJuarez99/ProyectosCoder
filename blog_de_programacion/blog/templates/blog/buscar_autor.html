@@ -1,4 +1,5 @@
 {% extends 'blog/base.html' %}
+
 {% block content %}
     <h2>Buscar artículos por autor</h2>
     <form method="get">
@@ -12,13 +13,20 @@
             {% for articulo in articulos %}
                 <li>
                     <strong>{{ articulo.titulo }}</strong><br>
-                    ✍️ Autor: {{ articulo.autor.nombre }}<br>
+                    ✍️ Autor: <a href="{% url 'perfil_autor' autor_id=articulo.autor.id %}">{{ articulo.autor.nombre }}</a><br>
                     📚 Categoría: {{ articulo.categoria.nombre }}<br>
-                    📝 {{ articulo.contenido }}
+                    🔗 GitHub: <a href="{{ articulo.contenido }}" target="_blank">{{ articulo.contenido }}</a><br>
                 </li>
             {% endfor %}
         </ul>
     {% elif request.GET.autor %}
         <p>No se encontraron artículos de ese autor.</p>
     {% endif %}
+
+    <h2>Lista de todos los autores</h2>
+    <ul>
+        {% for autor in todos_los_autores %}
+            <li>✍️ <a href="{% url 'perfil_autor' autor_id=autor.id %}">{{ autor.nombre }}</a></li>
+        {% endfor %}
+    </ul>
 {% endblock %}

@@ -24,26 +24,24 @@ class CategoriaForm(forms.ModelForm):
         model = Categoria
         fields = '__all__'
 
-from django import forms
-from .models import Autor, Categoria, Articulo
-
 class ArticuloForm(forms.ModelForm):
+    contenido = forms.CharField(
+        max_length=200,
+        label='Link de GitHub',
+        widget=forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'https://github.com/tu_usuario/repositorio'
+        })
+    )
+
+    nueva_categoria = forms.CharField(max_length=50, required=False, label="Nueva Categoría")
+    categoria = forms.ModelChoiceField(queryset=Categoria.objects.all(), required=False, label="Categoría")
+    # autor = forms.ModelChoiceField(queryset=Autor.objects.all(), required=False, label="Autor")
+    # nuevo_autor = forms.CharField(max_length=100, required=False, label="Nuevo Autor")
+
     class Meta:
         model = Articulo
-        fields = ['titulo', 'contenido', 'autor', 'categoria']
-        labels = {
-            'titulo': 'Título',
-            'contenido': 'Contenido',
-            'autor': 'Autor',
-            'categoria': 'Categoría',
-        }
-
-    autor = forms.ModelChoiceField(queryset=Autor.objects.all(), required=False, label="Autor")
-    categoria = forms.ModelChoiceField(queryset=Categoria.objects.all(), required=False, label="Categoría")
-
-    nuevo_autor = forms.CharField(max_length=100, required=False, label="Nuevo Autor")
-    nueva_categoria = forms.CharField(max_length=50, required=False, label="Nueva Categoría")
-
+        fields = ['titulo', 'contenido', 'categoria']
 
 class BusquedaArticuloForm(forms.Form):
     query = forms.CharField(max_length=100, required=False, label='Buscar Artículo')

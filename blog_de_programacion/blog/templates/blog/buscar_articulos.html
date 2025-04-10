@@ -13,10 +13,11 @@
             <ul class="resultados">
                 {% for articulo in resultados %}
                     <li>
-                        <a href="{{ articulo.get_absolute_url }}">{{ articulo.titulo }}</a><br>
+                        <strong>{{ articulo.titulo }}</strong><br>
                         <span style="color: #562ea5;">👨‍💻</span> <strong>Autor:</strong> {{ articulo.autor.nombre }}<br>
                         <span style="color: #562ea5;">📚</span> <strong>Categoría:</strong> {{ articulo.categoria.nombre }}<br>
-                        <span style="color: #562ea5;">📝</span> <strong>Descripción:</strong> {{ articulo.contenido|slice:":150" }}... <br>
+                        <span style="color: #562ea5;">🔗</span> <strong>GitHub:</strong> 
+                        <a href="{{ articulo.contenido }}" target="_blank">{{ articulo.contenido }}</a><br>
                     </li>
                 {% endfor %}
             </ul>
@@ -29,10 +30,11 @@
     <ul class="resultados">
     {% for articulo in todos_los_articulos %}
         <li>
-            <a href="{{ articulo.get_absolute_url }}">{{ articulo.titulo }}</a><br>
+            <strong>{{ articulo.titulo }}</strong><br>
             <span style="color: #562ea5;">👨‍💻</span> <strong>Autor:</strong> {{ articulo.autor.nombre }}<br>
             <span style="color: #562ea5;">📚</span> <strong>Categoría:</strong> {{ articulo.categoria.nombre }}<br>
-            <span style="color: #562ea5;">📝</span> <strong>Descripción:</strong> {{ articulo.contenido|slice:":150" }}... <br>
+            <span style="color: #562ea5;">🔗</span> <strong>GitHub:</strong> 
+            <a href="{{ articulo.contenido }}" target="_blank">{{ articulo.contenido }}</a><br>
         </li>
     {% endfor %}
 </ul>

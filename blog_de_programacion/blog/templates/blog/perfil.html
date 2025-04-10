@@ -1,0 +1,27 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <h2>Perfil de {{ autor.nombre }}</h2>
+
+    <h3>Artículos publicados:</h3>
+    <ul>
+        {% for articulo in articulos %}
+            <li>
+                <strong>{{ articulo.titulo }}</strong><br>
+                🔗 <a href="{{ articulo.contenido }}" target="_blank">{{ articulo.contenido }}</a><br>
+                📚 {{ articulo.categoria.nombre }}<br>
+                {% if es_mi_perfil %}
+                    <a href="{% url 'editar_articulo' articulo.id %}">Editar</a> | 
+                    <a href="{% url 'eliminar_articulo' articulo.id %}">Eliminar</a>
+                {% endif %}
+            </li>
+        {% empty %}
+            <p>No hay artículos aún.</p>
+        {% endfor %}
+    </ul>
+
+    <!-- Botón para regresar a la búsqueda de perfiles -->
+    <a href="{% url 'buscar_autor' %}">
+        <button>Regresar a Buscar Articulos por Autores</button>
+    </a>
+{% endblock %}

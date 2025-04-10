@@ -10,5 +10,9 @@ urlpatterns = [
     path('buscar_articulos/', views.buscar_articulos, name='buscar_articulos'),
     path('', views.inicio, name='inicio'),
     path('registro/', views.registro, name='registro'),
-    
+    path('perfil/<int:autor_id>/', views.perfil_autor, name='perfil_autor'),
+    path('articulo/editar/<int:pk>/', views.editar_articulo, name='editar_articulo'),
+    path('articulo/eliminar/<int:pk>/', views.eliminar_articulo, name='eliminar_articulo'),
+
+
 ]

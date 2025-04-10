@@ -35,7 +35,7 @@ class ArticuloForm(forms.ModelForm):
     )
 
     nueva_categoria = forms.CharField(max_length=50, required=False, label="Nueva Categoría")
-    categoria = forms.ModelChoiceField(queryset=Categoria.objects.all(), required=False, label="Categoría")
+    categoria = forms.ModelChoiceField(queryset=Categoria.objects.all(), required=False, label="Categoría",empty_label="Seleccione una categoría" )
     class Meta:
         model = Articulo
         fields = ['titulo', 'contenido', 'categoria']
